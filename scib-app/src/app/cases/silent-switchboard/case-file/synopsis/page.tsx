@@ -14,17 +14,40 @@ export default function Page() {
               <p className="text-sm text-slate-300">SCIB-CC-1991-022 • The Silent Switchboard</p>
             </div>
           </div>
-          <Link href="/cases/silent-switchboard" className="text-sm text-slate-300 hover:text-white">Back to Case</Link>
+
+          <Link href="/cases/silent-switchboard" className="text-sm text-slate-300 hover:text-white">
+            Back to Case
+          </Link>
         </header>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 space-y-3">
-          <p className="text-slate-200">
-            This is a stub page. Next phase: render real content from the database and store media in the Evidence Vault.
-          </p>
+        <section className="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 space-y-4">
+          <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <div className="text-xs text-slate-400 pb-1">FILE</div>
+            <div className="font-mono text-sm">/case_file/synopsis.txt</div>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="text-lg font-semibold">Case Summary</h2>
+            <p className="text-slate-200 leading-relaxed">
+              Martin Kells (38), a night telecom engineer, was found dead inside a locked telephone exchange building during his shift.
+              The scene was initially treated as an accident, but later review indicates sedation prior to death. Entry points appeared
+              secured and the building was reported locked from the inside. No clear intruder was identified. The case went cold amid
+              limited leads and a narrow investigative focus.
+            </p>
+          </div>
 
           <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 text-sm text-slate-200">
-            <div className="text-xs text-slate-400 pb-1">Current Path</div>
-            <div className="font-mono">.\src\app\cases\silent-switchboard\case-file\synopsis\page.tsx</div>
+            <div className="text-xs text-slate-400 pb-1">SCIB NOTE</div>
+            This file is available immediately. Hidden/secondary materials are accessed via retrieval keys in the Recovery Terminal.
+          </div>
+
+          <div className="pt-2">
+            <Link
+              href="/cases/silent-switchboard"
+              className="inline-block rounded-xl border border-slate-700 hover:bg-slate-900 transition px-4 py-3 font-medium"
+            >
+              Back to Case
+            </Link>
           </div>
         </section>
       </div>
