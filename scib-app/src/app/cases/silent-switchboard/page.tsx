@@ -121,8 +121,7 @@ export default function SilentSwitchboardCase() {
               </div>
 
               <div className="p-2">
-                <FileRow name="synopsis.txt" kind="file" />
-                <FileRow href="/cases/silent-switchboard/case-file/crime-scene-summary" name="crime_scene_summary.pdf" kind="file" />
+<FileRow href="/cases/silent-switchboard/case-file/crime-scene-summary" name="crime_scene_summary.pdf" kind="file" />
                 <FileRow href="/cases/silent-switchboard/case-file/autopsy-summary" name="autopsy_summary.pdf" kind="file" />
 
                 <FileRow name="witness_statements/" kind="folder" />
@@ -153,4 +152,6 @@ export default function SilentSwitchboardCase() {
     </main>
   );
 }
+
+
 
