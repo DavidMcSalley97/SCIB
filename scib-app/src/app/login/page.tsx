@@ -39,7 +39,7 @@ export default function LoginPage() {
 
           <div className="pt-2 grid grid-cols-1 gap-3">
             <Link
-              href="/cases/silent-switchboard"
+              href="/welcome"
               className="rounded-xl bg-blue-600 hover:bg-blue-500 transition px-4 py-3 font-medium text-center"
             >
               Continue to SCIB Database

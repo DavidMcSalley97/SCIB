@@ -1,6 +1,57 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 
+function FileRow({
+  href,
+  name,
+  kind,
+  indent = 0,
+  locked = false,
+}: {
+  href?: string;
+  name: string;
+  kind: "folder" | "file";
+  indent?: number;
+  locked?: boolean;
+}) {
+  const pad = { paddingLeft: `${12 + indent * 18}px` };
+
+  const icon =
+    kind === "folder"
+      ? locked
+        ? "🔒"
+        : "📁"
+      : "📄";
+
+  const rowClass =
+    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm " +
+    (href
+      ? "hover:bg-slate-900/60 hover:text-white transition"
+      : "text-slate-300");
+
+  const textClass = locked ? "text-slate-400" : "";
+
+  const content = (
+    <div className={rowClass} style={pad}>
+      <span className="w-6 text-center">{icon}</span>
+      <span className={`font-mono ${textClass}`}>{name}</span>
+      {locked && (
+        <span className="ml-auto text-xs text-slate-500">
+          LOCKED
+        </span>
+      )}
+    </div>
+  );
+
+  if (!href) return content;
+
+  return (
+    <Link href={href} className="block">
+      {content}
+    </Link>
+  );
+}
+
 export default function SilentSwitchboardCase() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 p-6">
@@ -16,7 +67,7 @@ export default function SilentSwitchboardCase() {
           <Link href="/" className="text-sm text-slate-300 hover:text-white">Exit</Link>
         </header>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 space-y-4">
+        <section className="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
             <div>
               <div className="text-sm text-slate-300">Case ID</div>
@@ -28,7 +79,7 @@ export default function SilentSwitchboardCase() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
               <div className="text-xs text-slate-400">Date</div>
               <div className="font-medium">03 May 1991</div>
@@ -43,7 +94,7 @@ export default function SilentSwitchboardCase() {
             </div>
           </div>
 
-          <div className="pt-3 space-y-2">
+          <div className="space-y-2">
             <h2 className="text-lg font-semibold">Synopsis</h2>
             <p className="text-slate-200 leading-relaxed">
               Martin Kells (38), a night telecom engineer, was found dead inside a locked telephone exchange building during
@@ -53,38 +104,43 @@ export default function SilentSwitchboardCase() {
             </p>
           </div>
 
-          <div className="pt-3 space-y-2">
-            <h2 className="text-lg font-semibold">Known Parties</h2>
-            <ul className="list-disc pl-6 text-slate-200 space-y-1">
-              <li><span className="font-medium">Gavin Roach</span> — coworker; prior dispute with victim.</li>
-              <li><span className="font-medium">Helen Kells</span> — spouse; financial stress; unclear timeline.</li>
-              <li><span className="font-medium">“Mr. Baines”</span> — private contractor on-site that week.</li>
-            </ul>
-          </div>
-
-          <div className="pt-3 space-y-2">
-            <h2 className="text-lg font-semibold">Case Directory (prototype)</h2>
-            <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 text-sm text-slate-200">
-              <div className="font-mono space-y-1">
-                <div>/case_file/</div>
-                <div className="pl-4">synopsis.txt</div>
-                <div className="pl-4">crime_scene_summary.pdf</div>
-                <div className="pl-4">autopsy_summary.pdf</div>
-                <div className="pl-4">witness_statements/</div>
-                <div className="pl-8">witness_statement_01.txt</div>
-                <div className="pl-8">witness_statement_02.txt</div>
-                <div className="pl-4">evidence_list.txt</div>
-                <div className="pl-4">suspects.txt</div>
-                <div className="pl-4">timeline.txt</div>
-                <div className="pt-2">/recovered/ <span className="text-slate-500">(LOCKED — requires retrieval keys)</span></div>
+          <div className="space-y-3">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-semibold">Case Directory</h2>
+                <p className="text-xs text-slate-500">
+                  Select a file to open. Recovered evidence is restricted until retrieved.
+                </p>
               </div>
             </div>
-            <p className="text-xs text-slate-500">
-              Next step: Recovery Terminal + unlock slots (REC-01..REC-05) driven by database.
-            </p>
+
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/40 overflow-hidden">
+              <div className="px-4 py-3 border-b border-slate-800 bg-slate-950/60">
+                <div className="text-xs text-slate-400">PATH</div>
+                <div className="font-mono text-sm">/case_file/</div>
+              </div>
+
+              <div className="p-2">
+                <FileRow href="/cases/silent-switchboard/case-file/synopsis" name="synopsis.txt" kind="file" />
+                <FileRow href="/cases/silent-switchboard/case-file/crime-scene-summary" name="crime_scene_summary.pdf" kind="file" />
+                <FileRow href="/cases/silent-switchboard/case-file/autopsy-summary" name="autopsy_summary.pdf" kind="file" />
+
+                <FileRow name="witness_statements/" kind="folder" />
+                <FileRow href="/cases/silent-switchboard/witness-statements/witness-statement-01" name="witness_statement_01.txt" kind="file" indent={1} />
+                <FileRow href="/cases/silent-switchboard/witness-statements/witness-statement-02" name="witness_statement_02.txt" kind="file" indent={1} />
+
+                <FileRow href="/cases/silent-switchboard/case-file/evidence-list" name="evidence_list.txt" kind="file" />
+                <FileRow href="/cases/silent-switchboard/case-file/suspects" name="suspects.txt" kind="file" />
+                <FileRow href="/cases/silent-switchboard/case-file/timeline" name="timeline.txt" kind="file" />
+
+                <div className="mt-2 border-t border-slate-800 pt-2">
+                  <FileRow href="/cases/silent-switchboard/recovered" name="/recovered/" kind="folder" locked />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="pt-2 flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/login"
               className="rounded-xl border border-slate-700 hover:bg-slate-900 transition px-4 py-3 font-medium text-center"
