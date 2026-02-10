@@ -79,8 +79,22 @@ function EvidenceTable() {
           </thead>
           <tbody className="divide-y divide-slate-800">
             <tr className="align-top">
-              <td className="px-5 py-4 font-mono">E-01</td>
-              <td className="px-5 py-4">Lanyard + Access Card</td>
+              <td className="px-5 py-4 font-mono">
+                <Link
+                  href="/cases/silent-switchboard/case-file/evidence/e-01"
+                  className="underline underline-offset-4 decoration-slate-600 hover:decoration-slate-300 hover:text-white"
+                >
+                  E-01
+                </Link>
+              </td>
+              <td className="px-5 py-4">
+                <Link
+                  href="/cases/silent-switchboard/case-file/evidence/e-01"
+                  className="underline underline-offset-4 decoration-slate-600 hover:decoration-slate-300 hover:text-white"
+                >
+                  Lanyard + Access Card
+                </Link>
+              </td>
               <td className="px-5 py-4">03/05/91 04:22</td>
               <td className="px-5 py-4 text-slate-200">
                 Card label: <span className="font-mono">MKELLS</span>. Lanyard clip fractured (fresh).
@@ -185,8 +199,8 @@ export default function Page() {
             </div>
 
             <p className="text-slate-200 text-sm">
-              Items below are taken from the original intake log with SCIB annotations added on reopen.
-              Several entries contain system stamps and reference numbers that may function as retrieval keys.
+              Items below are taken from the original intake log with SCIB annotations added on reopen. Several entries
+              contain system stamps and reference numbers that may function as retrieval keys.
             </p>
           </div>
 
@@ -199,15 +213,16 @@ export default function Page() {
               <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4">
                 <div className="text-xs text-slate-400">NOTE 01 • RETRIEVAL HINT</div>
                 <div className="mt-1">
-                  The access log footer reference <span className="font-mono">1991-022-03</span> is likely required alongside the
-                  header stamp <span className="font-mono">WHX/OPS</span>.
+                  The access log footer reference <span className="font-mono">1991-022-03</span> is likely required
+                  alongside the header stamp <span className="font-mono">WHX/OPS</span>.
                 </div>
               </div>
 
               <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4">
                 <div className="text-xs text-slate-400">NOTE 02</div>
                 <div className="mt-1">
-                  Missing chain-of-custody on the Master Key sheet is notable. If the sheet reappeared later, identify who “found” it.
+                  Missing chain-of-custody on the Master Key sheet is notable. If the sheet reappeared later, identify
+                  who “found” it.
                 </div>
               </div>
             </div>
