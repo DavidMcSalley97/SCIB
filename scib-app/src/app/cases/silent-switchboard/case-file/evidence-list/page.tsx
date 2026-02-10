@@ -102,8 +102,22 @@ function EvidenceTable() {
             </tr>
 
             <tr className="align-top">
-              <td className="px-5 py-4 font-mono">E-02</td>
-              <td className="px-5 py-4">Coffee Cup</td>
+              <td className="px-5 py-4 font-mono">
+                <Link
+                  href="/cases/silent-switchboard/case-file/evidence/e-02"
+                  className="underline underline-offset-4 decoration-slate-600 hover:decoration-slate-300 hover:text-white"
+                >
+                  E-02
+                </Link>
+              </td>
+              <td className="px-5 py-4">
+                <Link
+                  href="/cases/silent-switchboard/case-file/evidence/e-02"
+                  className="underline underline-offset-4 decoration-slate-600 hover:decoration-slate-300 hover:text-white"
+                >
+                  Coffee Cup
+                </Link>
+              </td>
               <td className="px-5 py-4">03/05/91 04:28</td>
               <td className="px-5 py-4 text-slate-200">
                 Cosmetic transfer on rim (lipstick). No matching statement in initial interviews.
