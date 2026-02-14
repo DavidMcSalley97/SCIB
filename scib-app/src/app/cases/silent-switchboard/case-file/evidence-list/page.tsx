@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+﻿﻿import Image from "next/image";
 import Link from "next/link";
 
 function Tag({ children }: { children: React.ReactNode }) {
@@ -162,10 +162,16 @@ export default function Page() {
                     </tr>
 
                     <tr className="align-top">
-                      <td className="px-5 py-4 font-mono">E-06</td>
-                      <td className="px-5 py-4">Maintenance Console Printout</td>
+                      <td className="px-5 py-4 font-mono">
+                        <EvidenceLink href="/cases/silent-switchboard/case-file/evidence/e-06">E-06</EvidenceLink>
+                      </td>
+                      <td className="px-5 py-4">
+                        <EvidenceLink href="/cases/silent-switchboard/case-file/evidence/e-06">
+                          Maintenance Console Printout
+                        </EvidenceLink>
+                      </td>
                       <td className="px-5 py-4">—</td>
-                      <td className="px-5 py-4 text-slate-200">Listed in intake log. Assets not present.</td>
+                      <td className="px-5 py-4 text-slate-200">Listed in intake log. Printed output retained as recovered.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -186,4 +192,3 @@ export default function Page() {
     </main>
   );
 }
-
