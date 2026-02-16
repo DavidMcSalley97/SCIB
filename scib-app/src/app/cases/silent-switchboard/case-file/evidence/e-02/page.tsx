@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+﻿﻿import Image from "next/image";
 import Link from "next/link";
 
 function Tag({ children }: { children: React.ReactNode }) {
@@ -22,7 +22,7 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
 }
 
 const PDF_SRC = "/evidence/SCIB-CC-1991-022/E-02/E-02_Evidence_Sheet.pdf";
-const PHOTO_SRC = "/evidence/SCIB-CC-1991-022/E-02/E-02_Photo_EvidenceBag.png";
+const PHOTO_SRC = "/evidence/SCIB-CC-1991-022/E-02/coffee-cup.png";
 
 export default function Page() {
   return (
@@ -97,6 +97,7 @@ export default function Page() {
                 height={900}
                 className="w-full h-auto"
                 priority
+                unoptimized
               />
             </div>
             <div className="text-xs text-slate-500">Exhibit photo: bagged coffee cup. Lipstick transfer visible on rim.</div>
